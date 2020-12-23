@@ -9,7 +9,7 @@ module.exports = (app: Application) => {
   const { controller, router, jwt } = app  
   // const jwt = middleware.jwt(app.config.jwt);
   router.get('/news', controller.news.list)
-  router.post("/login", controller.login.login)
+  router.post("/api/login", controller.login.login)
   router.get("/user/add", jwt, controller.user.findAll)
 }
 // config.default.js 
