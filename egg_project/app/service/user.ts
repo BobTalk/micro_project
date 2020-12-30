@@ -1,10 +1,27 @@
 const Service1 = require('egg').Service
 class UserService extends Service1 { 
-    async add() { 
+    async createUser(params: {userName:string, password: string, [key: string]: any}) { 
         const { ctx } = this
         const result = await ctx.model.User.create({
-            userName: 'hyq_test'
+            userName: params.userName,
+            password: params.password,
+            phone: params.phone,
+            gender: params.gender
         })
+        return result
+    }
+    async findOne(params: { userName: string, password: string, isRegister: Boolean }) { 
+        const { ctx } = this
+        let result:[] = []
+        if (params.isRegister) { // true =》 注册
+            result = await ctx.model.User.find({ userName: params.userName })
+        } else {
+            result = await ctx.model.User.findOne({ userName: params.userName, password: params.password }, [
+                'userName','phone', 'gender'
+            ])
+        }
+        console.log(result);
+        console.log("result");
         return result
     }
     async findAll() { 
