@@ -31,3 +31,12 @@ $ npm start
 
 - Node.js 8.x
 - Typescript 2.8+
+
+### app
+> router.ts 路由映射表
+> controller 存放控制器目录
+> service 业务逻辑
+> middleware 中间件
+> public 静态资源
+> extends 扩展框架目录 比如ctx上添加变量方法等
+### config 配置目录 中间件的配置项 环境配置变量

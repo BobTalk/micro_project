@@ -3,9 +3,11 @@
 
 import 'egg';
 import ExportJwt from '../../../app/middleware/jwt';
+import ExportTracer from '../../../app/middleware/tracer';
 
 declare module 'egg' {
   interface IMiddleware {
     jwt: typeof ExportJwt;
+    tracer: typeof ExportTracer;
   }
 }

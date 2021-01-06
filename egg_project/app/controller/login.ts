@@ -28,7 +28,8 @@ export default class LoginController extends Controller {
     //  ctx.body = token;
     ctx.body = {
       code: 200,
-      msg: 'success',
+      msg: '登录成功',
+      success: true,
       token,
       userInfo: res
     }
