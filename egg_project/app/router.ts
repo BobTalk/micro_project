@@ -10,6 +10,7 @@ module.exports = (app: Application) => {
   router.get("/user/find", jwt, controller.user.findAll)
   router.post("/api/login", controller.login.login)
   router.post("/api/register", controller.user.addUser)
+  router.get('/api/getNavBar', jwt, controller.navbar.getList)
 }
 // config.default.js 
 // config.middleware = [ 'jwt' ]

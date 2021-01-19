@@ -38,6 +38,14 @@ export default class LoginController extends Controller {
     const { ctx, app } = this;
     const params = ctx.request.body
     let res = await ctx.service.user.loginUser(params)
+    if (!res) { // 数据不存在
+      ctx.body = {
+        code: 200,
+        success: false,
+        msg: '用户信息不存在'
+      }
+      return
+    }
     const token = app.jwt.sign({
           username: params.userName, //需要存储的 token 数据
           pwd: params.password
