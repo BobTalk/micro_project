@@ -41,11 +41,30 @@ export default (appInfo: EggAppInfo) => {
     origin: '*',
     allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH'
   }
-  config.mongoose = {
-    url: 'mongodb://hyq:123456@localhost:27017',  // mongodb://dbName:dbPwd@localhost:27017 有用户名密码
-    options: {
-      useNewUrlParser: false
-    }
+  // config.mongoose = {
+  //   url: 'mongodb://hyq:123456@localhost:27017',  // mongodb://dbName:dbPwd@localhost:27017 有用户名密码
+  //   options: {
+  //     useNewUrlParser: false
+  //   }
+  // }
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: 'localhost',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码
+      password: '1qazxsw2',
+      // 数据库名
+      database: 'mini_project',
+    },
+    // 是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
   }
   config.tracer = {
     // 获取用户信息回调

@@ -1,5 +1,9 @@
 const Service1 = require('egg').Service
 class UserService extends Service1 { 
+    async loginUser(params: {userName:string, password: string, [key: string]: any}) { 
+        let res = await this.app.mysql.select('users', { user_name: params.userName, password: params.password })
+        console.log(res)
+    }
     async createUser(params: {userName:string, password: string, [key: string]: any}) { 
         const { ctx } = this
         const result = await ctx.model.User.create({

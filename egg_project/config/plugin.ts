@@ -12,9 +12,13 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-core'
   },
-  mongoose : {
+  // mongoose : {
+  //   enable: true,
+  //   package: 'egg-mongoose'
+  // },
+  mysql: {
     enable: true,
-    package: 'egg-mongoose'
+    package: 'egg-mysql',
   },
   jwt: {
     enable: true,
