@@ -1,8 +1,13 @@
 const Service1 = require('egg').Service;
 class UserService extends Service1 {
   async loginUser(params: { userName: string; password: string;[key: string]: any }) {
-    const res = await this.app.mysql.select('users', { where: { user_name: params.userName, password: params.password } });
-    return res[0];
+    const res = await this.app.mysql.get('users', { user_name: params.userName, password: params.password });
+    for (const item in res) {
+      if (item === 'password') {
+        delete res.password;
+      }
+    }
+    return res;
   }
   async createUser(params: { userName: string; password: string;[key: string]: any }) {
     const { app } = this;
