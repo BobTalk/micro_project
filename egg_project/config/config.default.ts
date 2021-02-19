@@ -9,17 +9,17 @@ export default (appInfo: EggAppInfo) => {
     listen: {
       path: '',
       port: 3000,
-      hostname: 'localhost'
-    }
+      hostname: 'localhost',
+    },
   };
   // add your egg config in here
   config.middleware = [];
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
-      '.tpl': 'nunjucks'
-    }
-  }
+      '.tpl': 'nunjucks',
+    },
+  };
   // 安全配置 （https://eggjs.org/zh-cn/core/security.html）
   config.security = {
     csrf: {
@@ -27,7 +27,7 @@ export default (appInfo: EggAppInfo) => {
       ignoreJSON: true,
     },
     // 允许访问接口的白名单
-    domainWhiteList: ['http://localhost:8080', 'http://localhost:3000'],
+    domainWhiteList: [ 'http://localhost:8080', 'http://localhost:3000' ],
   };
   // add your special config in here
   const bizConfig = {
@@ -35,12 +35,12 @@ export default (appInfo: EggAppInfo) => {
   };
   // jwt
   config.jwt = {
-    secret: 'abcdefghijklmnopqrstuvwxyz1234567890'
-  }
+    secret: 'abcdefghijklmnopqrstuvwxyz1234567890',
+  };
   config.cors = {
     origin: '*',
-    allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH'
-  }
+    allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH',
+  };
   // config.mongoose = {
   //   url: 'mongodb://hyq:123456@localhost:27017',  // mongodb://dbName:dbPwd@localhost:27017 有用户名密码
   //   options: {
@@ -65,40 +65,40 @@ export default (appInfo: EggAppInfo) => {
     app: true,
     // 是否加载到 agent 上，默认关闭
     agent: false,
-  }
+  };
   config.tracer = {
     // 获取用户信息回调
     getUser(ctx) {
-      return ctx.session.user || ''
+      return ctx.session.user || '';
     },
     // 获取IP回调
     getIp(ctx) {
       if (ctx.app.config.proxy && ctx.request.ips) {
-        return ctx.request.ips
+        return ctx.request.ips;
       }
-      return ctx.request.ip || ''
+      return ctx.request.ip || '';
     },
     // 存储数据回调
     async save(ctx, data) {
       if (ctx.model && ctx.model.Tracer) {
-        return await ctx.model.Tracer.create(data)
+        return await ctx.model.Tracer.create(data);
       }
-      return
+      return;
     },
     async auth() {
-      return true
+      return true;
     },
     // 获取数据回调
     async getData(ctx) {
       if (ctx.model && ctx.model.Tracer) {
-        return await ctx.model.Tracer.findAll()
+        return await ctx.model.Tracer.findAll();
       }
-      return []
+      return [];
     },
     // 报告页面所在的URL
-    pathUrl: '/tracer/_report'
+    pathUrl: '/tracer/_report',
 
-  }
+  };
   // the return config will combines to EggAppConfig
   return {
     ...config,

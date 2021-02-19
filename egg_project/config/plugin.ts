@@ -10,7 +10,7 @@ const plugin: EggPlugin = {
   // 跨域
   cors: {
     enable: true,
-    package: 'egg-core'
+    package: 'egg-core',
   },
   // mongoose : {
   //   enable: true,
@@ -22,8 +22,8 @@ const plugin: EggPlugin = {
   },
   jwt: {
     enable: true,
-    package: "egg-jwt"
-  }
+    package: 'egg-jwt',
+  },
 };
 
 export default plugin;
