@@ -36,6 +36,7 @@ export default class LoginController extends Controller {
   // }
   async login() {
     const { ctx, app } = this;
+    console.log('--------------');
     const params = ctx.request.body;
     const res = await ctx.service.user.loginUser(params);
     if (!res) { // 数据不存在
